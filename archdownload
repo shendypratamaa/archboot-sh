@@ -1,0 +1,13 @@
+#!/bin/sh
+
+arch() {
+	url="https://www.pkgbuild.com/~tpowa/archboot/iso/aarch64/latest/"
+	sort=$(curl $url 2>/dev/null | awk -F '"' '{print $2}' | grep -E '.iso' 2>/dev/null | sed 's/.sig//g' | uniq | fzf --prompt='select iso file > ')
+	if [ "$sort" = "" ]; then
+		echo '💁 Please select archlinux-iso file'
+	else
+		wget -nc "$url$sort"
+	fi
+}
+
+arch
