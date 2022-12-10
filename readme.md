@@ -1,8 +1,10 @@
-### ARCHBOOT ISO ARM64
+### ARCHBOOT ISO
 
 ![archboot](./archdownload.png)
 
-Download iso file archboot-archlinuxarm with latest release
+Download iso file archboot with latest release \
+-- archlinux-aarch64 (arm) \
+-- archlinux-x86_64  (x86_64)
 
 ```install
 curl https://raw.githubusercontent.com/shendypratamaa/archboot-sh/main/archdownload | sh
