@@ -2,9 +2,9 @@
 
 arch() {
 	aarch="arch-linux-arm\narch-linux-x86_64"
-	select="$(echo $aarch | fzf)"
+	select="$(echo -e $aarch | fzf)"
 
-	if [[ "$select" == "arch-linux-arm" ]]; then
+	if [[ "$select" = "arch-linux-arm" ]]; then
 		arm="https://www.pkgbuild.com/~tpowa/archboot/iso/aarch64/latest/"
 		sort=$(curl $arm 2>/dev/null | awk -F '"' '{print $2}' | grep -E '.iso' 2>/dev/null | sed 's/.sig//g' | uniq | fzf --prompt='select iso file > ')
 		if [ "$sort" = "" ]; then
@@ -14,7 +14,7 @@ arch() {
 		fi
 	fi
 
-	if [[ "$select" == "arch-linux-x86_64" ]]; then
+	if [[ "$select" = "arch-linux-x86_64" ]]; then
 		x86_64="https://www.pkgbuild.com/~tpowa/archboot/iso/x86_64/latest/"
 		sort=$(curl $x86_64 2>/dev/null | awk -F '"' '{print $2}' | grep -E '.iso' 2>/dev/null | sed 's/.sig//g' | uniq | fzf --prompt='select iso file > ')
 		if [ "$sort" = "" ]; then
